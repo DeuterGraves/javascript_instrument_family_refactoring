@@ -3,6 +3,7 @@ import PubSub from '../helpers/pub_sub.js';
 // constructor
 
 class InstrumentFamilies {
+
   constructor(data){
     this.data = data;
   }
@@ -13,12 +14,13 @@ class InstrumentFamilies {
     PubSub.subscribe('SelectView:change', (evt) => {
       const selectedIndex = evt.detail;
       this.publishFamilyDetail(selectedIndex);
-    }
+    });
   }
 
-  publishFamilyDetail(){
+
+  publishFamilyDetail(selectedIndex){
     const selectedFamily = this.data[selectedIndex];
-    PubSub.publish('InstrumentFamilies:selected-family-ready', selectedFamily);
+    PubSub.publish('InstrumentFamilies:selected-family-ready', selectedFamily)
   }
 
 }
