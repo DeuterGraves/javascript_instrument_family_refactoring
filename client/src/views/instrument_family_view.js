@@ -14,8 +14,18 @@ bindEvents(){
   })
 }
 
+// destructuring when it's passed in - inline breaks up the object passed in
 render({name, description, instruments}){
   this.container.innerHTML = '';
+  // OR COULD Destructure thusly:
+  // pass in the object when setting up the function, render(objectName) then - destructure
+  // const {name, description, instruments} = objectName
+  /*
+  under the hood it's:
+  const name = objectName.name;
+  const description = objectName.description;
+  const instruments = objectName.instruments;
+  */
 
   const familyName = this.createElement('h2', name);
   this.container.appendChild(familyName);
